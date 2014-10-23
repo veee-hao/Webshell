@@ -49,7 +49,6 @@ class jsonRPCServer {
 				
 		// reads the input data
 		$request = json_decode(file_get_contents('php://input'),true);
-		
 		// executes the task on local object
 		try {
 			if ($result = @call_user_func_array(array($object,$request['method']),$request['params'])) {
@@ -62,7 +61,8 @@ class jsonRPCServer {
 				$response = array (
 									'id' => $request['id'],
 									'result' => NULL,
-									'error' => 'unknown method or incorrect parameters'
+									//'error' => 'unknown method or incorrect parameters'
+									'error' => $result
 									);
 			}
 		} catch (Exception $e) {

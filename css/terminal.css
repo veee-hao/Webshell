@@ -27,13 +27,15 @@
 }
 .terminal .terminal-output div div, .terminal .prompt {
     display: block;
-    line-height: 14px;
-    height: auto;
+    line-height: 16px;
+    /*height: auto;*/
 }
 .terminal .prompt {
     float: left;
 }
-
+.prompt {
+    font-weight: bold;
+}
 .terminal {
     font-family: FreeMono, monospace;
     color: #44FF11;
@@ -88,4 +90,19 @@
 }
 .terminal a:hover {
     color: red;
+}
+.terminal table th,
+.terminal table td {
+    border: 1px dotted #0F60FF;
+    color: #44ff11;
+    font-size: 14px;
+}
+.terminal .long-list {
+    overflow-y: scroll;
+    font-size: 10px;
+    height: 400px;
+}
+.terminal err {
+    color: red;
+    font-weight: bold;
 }

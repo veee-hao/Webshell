@@ -1,0 +1,12 @@
+This tool should be deployed together with Hamsta
+
+INSTALL:
+on hamsta web server
+- cp -r Webshell /srv/www/htdocs/
+- cd /srv/www/htdocs/Webshell/
+- cp rpc_* ../hamsta/
+- cd includes
+- cp rpc_* jsonRPCServer.php ../hamsta/include/
+
+How to use:
+- access http://hamsta_host/Webshell/ by browser, FF is recommended.

@@ -7,7 +7,7 @@
 
     //$a=$m->machine_list();
     //$a=$m->machine_get("linux-64r5");
-    //$a=$m->machine_search('zbhan');
+    //print_r($a=$m->machine_search('name:jhao,usage:automation-debug'));
     //echo json_encode($a);
     
     jsonRPCServer::handle($m) or print 'no request';

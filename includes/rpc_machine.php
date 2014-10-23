@@ -57,15 +57,37 @@ class machine
     }
 
   }
-  public function machine_search($str)
+  public function machine_search()
   {
-    $new_all = array();
+    $map = array( 'id'=>'machine_id', 'name'=>'name',
+                  'status'=>'machine_status', 'usage'=>'usage',
+                  'reservation'=>'reservation', 'product'=>'product',
+                  'arch'=>'arch', 'kernel'=>'kernel',
+                  'ram'=>'memsize', 'disk'=>'disksize',
+	   );
+    $machines = array();
+    $params = func_get_args();
+    $str = implode(" ", $params);
+    $patterns = explode(",",$str);
     $all=$this->machine_list();
-    foreach($all as $machine)
+    $new_all = $all;
+    foreach($patterns as $pat)
     {
-     if(preg_match("/$str/",$machine['name'])) $new_all[]=$machine;
+      $search = explode(':',$pat);
+      $key = $map[$search[0]];
+      $machines = array();
+      //print_r($search);
+      //print_r($new_all);
+      foreach($new_all as $machine)
+      {
+        if(preg_match("/$search[1]/",$machine[$key])) 
+        {
+          $machines[]=$machine;
+        }
+      }
+      $new_all = $machines;
     }
-  return $new_all;
+    return $new_all;
 
   }
 
